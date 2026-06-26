@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Your Progress | JSAcademy</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+}
+
+/* ================= NAVBAR ================= */
+
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 8%;
+background:#111827;
+box-shadow:0 5px 20px rgba(0,0,0,.35);
+z-index:1000;
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+color:#38bdf8;
+}
+
+.logo span{
+color:#facc15;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:25px;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+transition:.3s;
+}
+
+nav ul li a:hover{
+color:#38bdf8;
+}
+
+nav a.active{
+color:#fff;
+background:linear-gradient(135deg,#3b82f6,#7c3aed);
+padding:10px 18px;
+border-radius:8px;
+font-weight:600;
+box-shadow:0 0 15px rgba(59,130,246,.5);
+}
+
+/* ================= HEADER ================= */
+
+header{
+padding-top:120px;
+padding-bottom:50px;
+text-align:center;
+}
+
+header h1{
+font-size:45px;
+margin-bottom:10px;
+}
+
+header p{
+color:#cbd5e1;
+}
+
+/* ================= DASHBOARD ================= */
+
+.dashboard{
+
+width:90%;
+max-width:1200px;
+
+margin:auto;
+
+display:grid;
+
+grid-template-columns:340px 1fr;
+
+gap:30px;
+
+margin-bottom:50px;
+
+}
+
+.summary{
+
+background:#1e293b;
+
+padding:30px;
+
+border-radius:20px;
+
+text-align:center;
+
+}
+
+.circle{
+
+width:180px;
+height:180px;
+
+margin:auto;
+
+border-radius:50%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:conic-gradient(#38bdf8 0deg,#334155 0deg);
+
+margin-bottom:25px;
+
+transition:.6s;
+
+}
+
+.inner{
+
+width:140px;
+height:140px;
+
+border-radius:50%;
+
+background:#0f172a;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:34px;
+
+font-weight:bold;
+
+}
+
+.stats{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:15px;
+
+margin-top:25px;
+
+}
+
+.box{
+
+background:#334155;
+
+padding:20px;
+
+border-radius:12px;
+
+}
+
+.box h2{
+
+color:#38bdf8;
+
+margin-bottom:5px;
+
+}
+
+/* ================= RIGHT PANEL ================= */
+
+.progress-panel{
+
+background:#1e293b;
+
+padding:30px;
+
+border-radius:20px;
+
+}
+
+.progress-panel h2{
+
+margin-bottom:20px;
+
+}
+
+.bar{
+
+height:22px;
+
+background:#334155;
+
+border-radius:30px;
+
+overflow:hidden;
+
+}
+
+.fill{
+
+height:100%;
+
+width:0%;
+
+background:linear-gradient(90deg,#06b6d4,#38bdf8);
+
+transition:.6s;
+
+}
+
+#progressText{
+
+margin-top:18px;
+
+}
+
+/* ================= LESSON CARDS ================= */
+
+.lessons{
+
+width:90%;
+
+max-width:1200px;
+
+margin:auto;
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+
+gap:22px;
+
+padding-bottom:60px;
+
+}
+
+.lesson{
+
+background:#1e293b;
+
+padding:22px;
+
+border-radius:15px;
+
+transition:.3s;
+
+}
+
+.lesson:hover{
+
+transform:translateY(-6px);
+
+}
+
+.lesson h3{
+
+margin-bottom:8px;
+
+}
+
+.lesson h4{
+
+margin-bottom:18px;
+
+}
+
+.status{
+
+display:inline-block;
+
+padding:8px 18px;
+
+border-radius:30px;
+
+font-size:14px;
+
+margin-bottom:15px;
+
+}
+
+.complete{
+
+background:#16a34a;
+
+}
+
+.pending{
+
+background:#dc2626;
+
+}
+
+.action-btn{
+
+display:inline-block;
+
+margin-top:10px;
+
+padding:10px 22px;
+
+background:#38bdf8;
+
+color:white;
+
+text-decoration:none;
+
+border-radius:30px;
+
+font-size:14px;
+
+transition:.3s;
+
+}
+
+.action-btn:hover{
+
+background:#0284c7;
+
+}
+
+.done-btn{
+
+display:inline-block;
+
+margin-top:10px;
+
+padding:10px 22px;
+
+background:#16a34a;
+
+color:white;
+
+border-radius:30px;
+
+text-decoration:none;
+
+cursor:default;
+
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+
+background:#020617;
+
+padding:20px;
+
+text-align:center;
+
+color:#94a3b8;
+
+margin-top:40px;
+
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+.dashboard{
+
+grid-template-columns:1fr;
+
+}
+
+nav{
+
+flex-direction:column;
+
+}
+
+nav ul{
+
+margin-top:15px;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+    <nav>
+
+<div class="logo">
+JS<span>Academy</span>
+</div>
+
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="progress.html" class="active">Progress</a></li>
+<li><a href="lessons.html">Lessons</a></li>
+<li><a href="quiz.html">Quiz</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+
+</nav>
+
+<header>
+
+<h1>Your Learning Journey</h1>
+
+<p>
+Track your JavaScript learning progress lesson by lesson.
+</p>
+
+</header>
+
+<section class="dashboard">
+
+<div class="summary">
+
+<div class="circle" id="circle">
+
+<div class="inner" id="percent">
+0%
+</div>
+
+</div>
+
+<h2>Overall Progress</h2>
+
+<div class="stats">
+
+<div class="box">
+<h2 id="lessonCount">0/15</h2>
+<p>Lessons</p>
+</div>
+
+<div class="box">
+<h2 id="quizCount">0/15</h2>
+<p>Quizzes</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="progress-panel">
+
+<h2>Course Completion</h2>
+
+<div class="bar">
+<div class="fill" id="fill"></div>
+</div>
+
+<h3 id="progressText">0% Completed</h3>
+
+<br>
+
+<p>
+
+Complete all <b>15 lessons</b> and pass all <b>15 quizzes</b> to unlock the Final Certification Quiz and earn your JavaScript Certificate.
+
+</p>
+
+</div>
+
+</section>
+
+<section class="lessons" id="lessonGrid">
+
+<!-- JavaScript will generate all lesson cards here -->
+
+</section>
+
+<footer>
+
+© 2026 JSAcademy | Track Your JavaScript Journey
+
+</footer>
+<script>
+
+const lessonTitles = [
+"Introduction",
+"Variables",
+"Data Types",
+"Operators",
+"Conditions",
+"Loops",
+"Functions",
+"Arrays",
+"Objects",
+"DOM",
+"Events",
+"ES6",
+"Promises",
+"Async / Await",
+"API & Projects"
+];
+
+let completedLessons = 0;
+let completedQuizzes = 0;
+
+// Count completed lessons & quizzes
+for(let i=1;i<=15;i++){
+
+    if(localStorage.getItem(`lesson${i}Completed`)==="true"){
+        completedLessons++;
+    }
+
+    if(localStorage.getItem(`quiz${i}Completed`)==="true"){
+        completedQuizzes++;
+    }
+
+}
+
+// Total progress
+let overall=((completedLessons+completedQuizzes)/30)*100;
+
+// Dashboard
+document.getElementById("lessonCount").innerHTML=
+completedLessons+"/15";
+
+document.getElementById("quizCount").innerHTML=
+completedQuizzes+"/15";
+
+document.getElementById("percent").innerHTML=
+Math.round(overall)+"%";
+
+document.getElementById("progressText").innerHTML=
+Math.round(overall)+"% Course Completed";
+
+document.getElementById("fill").style.width=
+overall+"%";
+
+document.getElementById("circle").style.background=
+`conic-gradient(#38bdf8 ${overall*3.6}deg,#334155 0deg)`;
+
+// Lesson cards
+const grid=document.getElementById("lessonGrid");
+
+for(let i=1;i<=15;i++){
+
+    const lessonDone=
+    localStorage.getItem(`lesson${i}Completed`)==="true";
+
+    const quizDone=
+    localStorage.getItem(`quiz${i}Completed`)==="true";
+
+    let status="";
+    let action="";
+
+    if(!lessonDone){
+
+        status=`<span class="status pending">⏳ Pending</span>`;
+
+        action=
+        `<a class="action-btn" href="lesson${i}.html">
+        Start Lesson
+        </a>`;
+
+    }
+
+    else if(lessonDone && !quizDone){
+
+        status=`<span class="status pending">📘 Lesson Complete</span>`;
+
+        action=
+        `<a class="action-btn" href="lesson${i}-quiz.html">
+        Take Quiz
+        </a>`;
+
+    }
+
+    else{
+
+        status=`<span class="status complete">
+        ✔ Completed
+        </span>`;
+
+        action=
+        `<span class="done-btn">
+        ✔ Completed
+        </span>`;
+
+    }
+
+    grid.innerHTML+=`
+
+    <div class="lesson">
+
+    <h3>Chapter ${i}</h3>
+
+    <h4>${lessonTitles[i-1]}</h4>
+
+    ${status}
+
+    <br>
+
+    ${action}
+
+    </div>
+
+    `;
+
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Certificate | JSAcademy</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:#fff;
+}
+
+/* Navbar */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 8%;
+background:#111827;
+position:fixed;
+width:100%;
+top:0;
+left:0;
+z-index:1000;
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+color:#38bdf8;
+}
+
+.logo span{
+color:#facc15;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:25px;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+transition:.3s;
+}
+
+nav a:hover,
+.active{
+color:#38bdf8;
+}
+
+/* Page */
+
+.container{
+max-width:1100px;
+margin:130px auto 50px;
+padding:20px;
+text-align:center;
+}
+
+.container h1{
+font-size:42px;
+margin-bottom:10px;
+}
+
+.container p{
+color:#cbd5e1;
+margin-bottom:30px;
+}
+
+input{
+width:350px;
+max-width:90%;
+padding:14px;
+border:none;
+border-radius:10px;
+font-size:16px;
+margin-bottom:25px;
+outline:none;
+}
+
+/* Certificate */
+button:disabled{
+    background:#475569;
+    cursor:not-allowed;
+    opacity:.8;
+}
+
+.certificate{
+background:white;
+color:#111827;
+padding:50px;
+border:15px solid #d4af37;
+border-radius:15px;
+box-shadow:0 15px 40px rgba(0,0,0,.35);
+display:none;
+}
+
+.certificate h2{
+font-size:46px;
+color:#d4af37;
+}
+
+.certificate h3{
+margin:20px 0;
+font-size:32px;
+}
+
+.student{
+font-size:38px;
+font-weight:bold;
+color:#2563eb;
+margin:25px 0;
+border-bottom:2px solid #d4af37;
+display:inline-block;
+padding-bottom:10px;
+}
+
+.info{
+margin-top:30px;
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.signature{
+margin-top:50px;
+font-family:cursive;
+font-size:26px;
+}
+
+button{
+padding:14px 30px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+font-size:16px;
+margin:10px;
+background:#38bdf8;
+color:white;
+transition:.3s;
+}
+
+button:hover{
+background:#0284c7;
+}
+
+@media(max-width:768px){
+
+nav{
+flex-direction:column;
+}
+
+nav ul{
+margin-top:15px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.certificate{
+padding:25px;
+}
+
+.info{
+flex-direction:column;
+text-align:center;
+}
+
+.student{
+font-size:28px;
+}
+
+}
+
+@media print{
+
+body{
+background:white;
+}
+
+nav,
+.container > h1,
+.container > p,
+input,
+#generateBtn,
+#printBtn{
+display:none;
+}
+
+.certificate{
+display:block !important;
+box-shadow:none;
+margin-top:0;
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<nav>
+
+<div class="logo">JS<span>Academy</span></div>
+
+<ul>
+
+<li><a href="index.html">Home</a></li>
+<li><a href="progress.html">Progress</li>
+<li><a href="lessons.html">Lessons</a></li>
+<li><a href="quiz.html">Quiz</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="contact.html">Contact</a></li>
+
+</ul>
+
+</nav>
+
+<div class="container">
+
+<h1>JavaScript Course Certificate</h1>
+
+<p>
+Generate your certificate after successfully completing all lessons and quizzes.
+</p>
+
+<input type="text" id="name" placeholder="Enter Your Full Name">
+
+<br>
+
+<button id="generateBtn" onclick="generateCertificate()">
+Generate Certificate
+</button>
+
+<button id="printBtn" onclick="window.print()">
+Download / Print
+</button>
+
+<br><br>
+
+<div class="certificate" id="certificate">
+
+<h2>CERTIFICATE OF COMPLETION</h2>
+
+<p>This certificate is proudly presented to</p>
+
+<div class="student" id="studentName"></div>
+
+<p>
+
+For successfully completing the
+
+<b>Complete JavaScript Programming Course</b>
+
+with all lessons, quizzes, and practical exercises.
+
+</p>
+
+<div class="info">
+
+<div>
+<strong>Completion Date</strong><br>
+<span id="date"></span>
+</div>
+
+<div>
+<strong>Certificate ID</strong><br>
+<span id="cid"></span>
+</div>
+
+</div>
+
+<div class="signature">
+JSAcademy Instructor
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function generateCertificate(){
+
+let name=document.getElementById("name").value.trim();
+
+if(name===""){
+alert("Please enter your full name.");
+return;
+}
+
+document.getElementById("studentName").innerHTML=name;
+
+let today=new Date();
+
+document.getElementById("date").innerHTML=today.toLocaleDateString();
+
+let id="JSA-"+Math.floor(Math.random()*1000000);
+
+document.getElementById("cid").innerHTML=id;
+
+document.getElementById("certificate").style.display="block";
+
+}
+
+function generateCertificate(){
+
+// existing code
+
+}
+
+// Paste Part 4 here
+
+let lessonsCompleted = 0;
+let quizzesCompleted = 0;
+
+for(let i = 1; i <= 15; i++){
+
+    if(localStorage.getItem(`lesson${i}Completed`) === "true"){
+        lessonsCompleted++;
+    }
+
+    if(localStorage.getItem(`quiz${i}Completed`) === "true"){
+        quizzesCompleted++;
+    }
+
+}
+
+const totalCompleted = lessonsCompleted + quizzesCompleted;
+
+const generateBtn = document.getElementById("generateBtn");
+
+if(totalCompleted === 30){
+
+    generateBtn.disabled = false;
+    generateBtn.innerHTML = "🎓 Generate Certificate";
+
+}else{
+
+    generateBtn.disabled = true;
+    generateBtn.innerHTML =
+    `Complete all Lessons & Quizzes (${totalCompleted}/30)`;
+
+}
+
+</script>
+
+</body>
+</html>

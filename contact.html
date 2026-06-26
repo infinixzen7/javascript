@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | JSAcademy</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+}
+
+/* NAV */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 8%;
+background:#111827;
+z-index:1000;
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+color:#38bdf8;
+}
+
+.logo span{color:#facc15;}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:25px;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+}
+
+nav a:hover,.active{
+color:#38bdf8;
+}
+
+/* HEADER */
+
+header{
+padding:140px 8% 30px;
+text-align:center;
+}
+
+header h1{
+font-size:45px;
+}
+
+header p{
+color:#cbd5e1;
+}
+
+/* FORM */
+
+.container{
+width:90%;
+max-width:700px;
+margin:auto;
+background:#1e293b;
+padding:35px;
+border-radius:15px;
+}
+
+input,textarea{
+width:100%;
+padding:14px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+outline:none;
+font-size:15px;
+}
+
+textarea{
+height:140px;
+resize:none;
+}
+
+button{
+padding:14px 25px;
+background:#38bdf8;
+border:none;
+color:white;
+border-radius:30px;
+cursor:pointer;
+transition:.3s;
+font-size:16px;
+}
+
+button:hover{
+background:#0284c7;
+}
+
+.msg{
+margin-top:10px;
+font-size:14px;
+}
+
+/* INFO */
+
+.info{
+text-align:center;
+margin-top:30px;
+color:#cbd5e1;
+}
+
+nav a.active{
+    color:#fff;
+    background:linear-gradient(135deg,#3b82f6,#7c3aed);
+    padding:10px 18px;
+    border-radius:8px;
+    font-weight:600;
+    box-shadow:0 0 15px rgba(59,130,246,.5);
+}
+
+/* FOOTER */
+
+footer{
+margin-top:40px;
+text-align:center;
+padding:20px;
+background:#020617;
+color:#94a3b8;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+<div class="logo">JS<span>Academy</span></div>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="journey.html">Journey</a></li>
+<li><a href="lessons.html">Lessons</a></li>
+<li><a href="quiz.html">Quiz</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="contact.html" class="active">Contact</a></li>
+</ul>
+</nav>
+
+<header>
+<h1>Contact Us</h1>
+<p>Send us a message — we reply within 24 hours</p>
+</header>
+
+<div class="container">
+
+<input type="text" id="name" placeholder="Your Name *" required>
+<input type="email" id="email" placeholder="Your Email *" required>
+<input type="text" id="subject" placeholder="Subject">
+<textarea id="message" placeholder="Your Message"></textarea>
+
+<button onclick="sendEmail()">Send Message</button>
+
+<div class="msg" id="msg"></div>
+
+</div>
+
+<div class="info">
+<p>📧 support@jsacademy.com</p>
+<p>📞 +91-XXXXXXXXXX</p>
+</div>
+
+<footer>
+© 2026 JSAcademy | All Rights Reserved
+</footer>
+
+<script>
+
+// INIT EMAILJS (replace with your ID later)
+(function(){
+emailjs.init("YOUR_PUBLIC_KEY"); // <-- replace this
+})();
+
+function sendEmail(){
+
+let name = document.getElementById("name").value.trim();
+let email = document.getElementById("email").value.trim();
+let subject = document.getElementById("subject").value;
+let message = document.getElementById("message").value;
+
+let msgBox = document.getElementById("msg");
+
+// Validation
+if(name === "" || email === ""){
+msgBox.style.color = "red";
+msgBox.innerHTML = "Name and Email are required!";
+return;
+}
+
+let params = {
+from_name: name,
+from_email: email,
+subject: subject,
+message: message
+};
+
+emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",params)
+.then(function(response){
+msgBox.style.color = "lightgreen";
+msgBox.innerHTML = "Message sent successfully!";
+})
+.catch(function(error){
+msgBox.style.color = "red";
+msgBox.innerHTML = "Failed to send message!";
+});
+
+}
+
+</script>
+
+</body>
+</html>

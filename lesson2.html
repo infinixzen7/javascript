@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lesson 2 - Variables | JSAcademy</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+line-height:1.6;
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 8%;
+background:#111827;
+z-index:1000;
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+color:#38bdf8;
+}
+
+.logo span{
+color:#facc15;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:25px;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+transition:.3s;
+}
+
+nav a:hover{
+color:#38bdf8;
+}
+
+.container{
+max-width:1000px;
+margin:120px auto 50px;
+padding:0 20px;
+}
+
+h1{
+font-size:40px;
+margin-bottom:10px;
+}
+
+.tag{
+display:inline-block;
+padding:6px 14px;
+background:#16a34a;
+border-radius:20px;
+font-size:13px;
+margin-bottom:20px;
+}
+
+.card{
+background:#1e293b;
+padding:25px;
+border-radius:15px;
+margin-bottom:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+.card h2{
+color:#38bdf8;
+margin-bottom:12px;
+}
+
+.card p{
+color:#cbd5e1;
+}
+
+.code-box{
+background:#020617;
+padding:15px;
+border-radius:10px;
+margin-top:15px;
+font-family:monospace;
+color:#22c55e;
+overflow:auto;
+}
+
+textarea{
+width:100%;
+height:150px;
+margin-top:10px;
+padding:15px;
+border:none;
+border-radius:10px;
+background:#fff;
+font-family:monospace;
+font-size:15px;
+outline:none;
+}
+
+button{
+padding:12px 22px;
+border:none;
+border-radius:30px;
+background:#38bdf8;
+color:white;
+cursor:pointer;
+margin-top:15px;
+font-size:15px;
+transition:.3s;
+}
+
+button:hover{
+background:#0284c7;
+}
+
+.output{
+margin-top:15px;
+background:#020617;
+padding:15px;
+border-radius:10px;
+min-height:60px;
+color:#facc15;
+}
+
+.complete-btn{
+background:#16a34a;
+}
+
+.complete-btn:hover{
+background:#15803d;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#020617;
+color:#94a3b8;
+margin-top:40px;
+}
+
+@media(max-width:768px){
+
+nav{
+flex-direction:column;
+padding:15px;
+}
+
+nav ul{
+margin-top:15px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+h1{
+font-size:32px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+JS<span>Academy</span>
+</div>
+
+<ul>
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="progress.html">Progress</a></li>
+
+<li><a href="lessons.html">Lessons</a></li>
+
+<li><a href="quiz.html">Quiz</a></li>
+
+<li><a href="about.html">About</a></li>
+
+<li><a href="contact.html">Contact</a></li>
+
+</ul>
+
+</nav>
+
+<div class="container">
+
+<h1>Lesson 2 : Variables</h1>
+
+<span class="tag">Beginner</span>
+
+<div class="card">
+
+<h2>📘 What are Variables?</h2>
+
+<p>
+
+Variables are containers used to store information inside a JavaScript program.
+
+Instead of writing the same value repeatedly, we store it inside a variable and use it whenever required.
+
+</p>
+
+<div class="code-box">
+
+let name = "Rahul";
+
+console.log(name);
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>💡 Why Do We Use Variables?</h2>
+
+<p>
+
+Variables make programs easier to write and manage.
+
+They allow us to store numbers, text, true/false values and many other kinds of data.
+
+</p>
+
+<div class="code-box">
+
+let age = 20;
+
+let city = "Delhi";
+
+let isStudent = true;
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>📌 Types of Variables</h2>
+
+<p>
+
+JavaScript provides three ways to declare variables.
+
+</p>
+
+<div class="code-box">
+
+var language = "JavaScript";
+
+let score = 95;
+
+const pi = 3.14159;
+
+</div>
+
+<p style="margin-top:15px;">
+
+<b>var</b> → Old method (avoid in modern JavaScript)
+
+<br><br>
+
+<b>let</b> → Value can change later.
+
+<br><br>
+
+<b>const</b> → Value cannot be changed after declaration.
+
+</p>
+
+</div>
+<div class="card">
+
+<h2>📝 Variable Naming Rules</h2>
+
+<p>
+
+Follow these important rules while creating variables:
+
+</p>
+
+<ul style="margin-left:25px;color:#cbd5e1;line-height:2;">
+
+<li>✔ Variable names can contain letters, numbers, _ and $.</li>
+
+<li>✔ Variable names cannot start with a number.</li>
+
+<li>✔ Variable names are case-sensitive.</li>
+
+<li>✔ Do not use JavaScript keywords like <b>let</b>, <b>const</b>, <b>if</b>, <b>for</b>, etc.</li>
+
+<li>✔ Use meaningful names like <b>studentName</b> instead of <b>x</b>.</li>
+
+</ul>
+
+<div class="code-box">
+
+let studentName = "Amit";
+
+let marks = 95;
+
+const country = "India";
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>🚫 Invalid Variable Names</h2>
+
+<p>
+
+The following declarations are incorrect.
+
+</p>
+
+<div class="code-box">
+
+let 1name = "Rahul"; ❌
+
+let my-name = "Rahul"; ❌
+
+let const = 20; ❌
+
+</div>
+
+<p style="margin-top:15px;">
+
+These produce errors because they break JavaScript naming rules.
+
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>✅ Correct Variable Names</h2>
+
+<div class="code-box">
+
+let firstName = "Rahul";
+
+let totalMarks = 450;
+
+let user_age = 21;
+
+const PI = 3.14159;
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>🧪 Try it Yourself</h2>
+
+<p>
+
+Run the following code and experiment by changing the values.
+
+</p>
+
+<textarea id="code">
+
+let name = "John";
+
+let age = 22;
+
+const country = "India";
+
+console.log(name);
+
+console.log(age);
+
+console.log(country);
+
+</textarea>
+
+<button onclick="runCode()">
+
+Run Code
+
+</button>
+
+<div class="output" id="output">
+
+Output will appear here...
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>📖 Summary</h2>
+
+<p>
+
+✔ Variables store information.
+
+<br><br>
+
+✔ Use <b>let</b> when values may change.
+
+<br><br>
+
+✔ Use <b>const</b> for fixed values.
+
+<br><br>
+
+✔ Avoid using <b>var</b> in modern JavaScript.
+
+<br><br>
+
+✔ Choose meaningful variable names.
+
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>✔ Mark Lesson Complete</h2>
+
+<p>
+
+Click the button after finishing this lesson.
+
+</p>
+
+<button class="complete-btn" onclick="completeLesson()">
+
+Mark Lesson Complete
+
+</button>
+
+</div>
+<footer>
+
+© 2026 JSAcademy | Learn JavaScript Step by Step
+
+</footer>
+
+<script>
+
+// ===========================
+// TRY IT YOURSELF
+// ===========================
+
+function runCode(){
+
+let code=document.getElementById("code").value;
+
+let output=document.getElementById("output");
+
+try{
+
+let log=[];
+
+let backup=console.log;
+
+console.log=function(msg){
+
+log.push(msg);
+
+};
+
+eval(code);
+
+console.log=backup;
+
+output.innerHTML=log.join("<br>") || "Code executed successfully.";
+
+}
+
+catch(err){
+
+output.innerHTML="Error : "+err.message;
+
+}
+
+}
+
+// ===========================
+// COMPLETE LESSON
+// ===========================
+
+function completeLesson(){
+
+// Prevent counting Lesson 2 more than once
+
+if(localStorage.getItem("lesson2Completed")=="true"){
+
+alert("You have already completed this lesson.");
+
+return;
+
+}
+
+// Mark Lesson 2 as completed
+
+localStorage.setItem("lesson2Completed","true");
+
+// Unlock Quiz 2
+
+localStorage.setItem("lesson2Unlocked","true");
+
+// Increase completed lessons
+
+let completed=Number(localStorage.getItem("lessonsCompleted")) || 0;
+
+completed++;
+
+if(completed>15){
+
+completed=15;
+
+}
+
+localStorage.setItem("lessonsCompleted",completed);
+
+alert("🎉 Lesson 2 completed successfully!");
+
+}
+
+</script>
+
+</body>
+</html>

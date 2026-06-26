@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | JSAcademy</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 8%;
+background:#111827;
+box-shadow:0 5px 20px rgba(0,0,0,.35);
+z-index:1000;
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+color:#38bdf8;
+}
+
+.logo span{
+color:#facc15;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:25px;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+transition:.3s;
+}
+
+nav a:hover,
+.active{
+color:#38bdf8;
+}
+
+/* HERO */
+
+.hero{
+padding:140px 8% 60px;
+text-align:center;
+}
+
+.hero h1{
+font-size:48px;
+margin-bottom:15px;
+}
+
+.hero p{
+color:#cbd5e1;
+max-width:800px;
+margin:auto;
+line-height:1.8;
+font-size:18px;
+}
+
+/* CARDS */
+
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
+padding:60px 0;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:#1e293b;
+padding:25px;
+border-radius:15px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+border:1px solid #38bdf8;
+}
+
+.card h3{
+color:#38bdf8;
+margin-bottom:10px;
+}
+
+nav a.active{
+    color:#fff;
+    background:linear-gradient(135deg,#3b82f6,#7c3aed);
+    padding:10px 18px;
+    border-radius:8px;
+    font-weight:600;
+    box-shadow:0 0 15px rgba(59,130,246,.5);
+}
+
+/* FOOTER */
+
+footer{
+background:#020617;
+padding:20px;
+text-align:center;
+color:#94a3b8;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">JS<span>Academy</span></div>
+
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="journey.html">Journey</a></li>
+<li><a href="lessons.html">Lessons</a></li>
+<li><a href="quiz.html">Quiz</a></li>
+<li><a href="about.html" class="active">About</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<h1>About JSAcademy</h1>
+
+<p>
+JSAcademy is a modern learning platform designed to help beginners learn JavaScript in a simple,
+structured, and practical way. We focus on hands-on coding, real-world projects, and step-by-step
+progress tracking to make learning enjoyable and effective.
+</p>
+
+</section>
+
+<section class="container">
+
+<div class="card">
+<h3>🎯 Our Mission</h3>
+<p>To make JavaScript learning simple, interactive, and accessible for everyone.</p>
+</div>
+
+<div class="card">
+<h3>📚 Structured Learning</h3>
+<p>Step-by-step lessons from basics to advanced with quizzes and practice tasks.</p>
+</div>
+
+<div class="card">
+<h3>🚀 Project Based</h3>
+<p>Learn by building real-world projects like apps, calculators, and games.</p>
+</div>
+
+<div class="card">
+<h3>🏆 Certification</h3>
+<p>Earn a certificate after completing all lessons and quizzes successfully.</p>
+</div>
+
+</section>
+
+<footer>
+© 2026 JSAcademy | Learn. Build. Grow.
+</footer>
+
+</body>
+</html>

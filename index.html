@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JS Academy | Learn JavaScript</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+overflow-x:hidden;
+}
+
+/* Navbar */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:rgba(15,23,42,.95);
+backdrop-filter:blur(15px);
+position:fixed;
+width:100%;
+top:0;
+z-index:1000;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.logo{
+font-size:30px;
+font-weight:700;
+color:#38bdf8;
+}
+
+.logo span{
+color:#facc15;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:35px;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+font-weight:500;
+transition:.3s;
+}
+
+nav ul li a:hover{
+color:#38bdf8;
+}
+
+/* Hero */
+
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:120px 8%;
+}
+
+.hero-text{
+max-width:600px;
+}
+
+.hero-text h1{
+font-size:58px;
+line-height:1.2;
+margin-bottom:20px;
+}
+
+.hero-text span{
+color:#38bdf8;
+}
+
+.hero-text p{
+font-size:18px;
+color:#cbd5e1;
+line-height:1.8;
+margin-bottom:35px;
+}
+
+.buttons{
+display:flex;
+gap:20px;
+}
+
+.btn{
+padding:15px 35px;
+border:none;
+border-radius:50px;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+.primary{
+background:#38bdf8;
+color:#fff;
+}
+
+.primary:hover{
+background:#0ea5e9;
+transform:translateY(-3px);
+}
+
+.secondary{
+background:transparent;
+border:2px solid #38bdf8;
+color:#38bdf8;
+}
+
+.secondary:hover{
+background:#38bdf8;
+color:white;
+}
+
+/* Hero Illustration */
+
+.hero-card{
+
+width:420px;
+background:#1e293b;
+padding:35px;
+border-radius:20px;
+box-shadow:0 20px 50px rgba(0,0,0,.4);
+
+}
+
+.code{
+background:#020617;
+padding:20px;
+border-radius:15px;
+font-family:monospace;
+line-height:2;
+color:#38bdf8;
+}
+
+.keyword{color:#c084fc;}
+.string{color:#22c55e;}
+.number{color:#facc15;}
+
+/* Features */
+
+.features{
+padding:80px 8%;
+}
+
+.features h2{
+text-align:center;
+font-size:40px;
+margin-bottom:50px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+}
+
+.card{
+background:#1e293b;
+padding:30px;
+border-radius:18px;
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+background:#263449;
+}
+
+.card h3{
+margin:20px 0;
+color:#38bdf8;
+}
+
+.card p{
+color:#cbd5e1;
+line-height:1.7;
+}
+
+/* CTA */
+
+.cta{
+padding:90px 8%;
+text-align:center;
+}
+
+.cta h2{
+font-size:42px;
+margin-bottom:20px;
+}
+
+.cta p{
+max-width:700px;
+margin:auto;
+color:#cbd5e1;
+line-height:1.8;
+margin-bottom:35px;
+}
+
+/* Footer */
+
+footer{
+padding:25px;
+text-align:center;
+background:#020617;
+color:#94a3b8;
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.hero{
+flex-direction:column;
+justify-content:center;
+text-align:center;
+gap:50px;
+}
+
+.hero-text h1{
+font-size:42px;
+}
+
+.hero-card{
+width:100%;
+}
+
+nav{
+flex-direction:column;
+padding:15px;
+}
+
+nav ul{
+margin-top:15px;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+}
+
+nav a.active{
+    color:#fff;
+    background:linear-gradient(135deg,#3b82f6,#7c3aed);
+    padding:10px 18px;
+    border-radius:8px;
+    font-weight:600;
+    box-shadow:0 0 15px rgba(59,130,246,.5);
+}
+
+}
+.locked-nav{
+    color:#94a3b8;
+    pointer-events:none;
+    cursor:not-allowed;
+    opacity:.6;
+}
+
+.unlocked-nav{
+    color:#38bdf8;
+    pointer-events:auto;
+    opacity:1;
+}
+
+nav a.active{
+    color:#fff;
+    background:linear-gradient(135deg,#3b82f6,#7c3aed);
+    padding:10px 18px;
+    border-radius:8px;
+    font-weight:600;
+    box-shadow:0 0 15px rgba(59,130,246,.5);
+}
+
+</style>
+
+</head>
+<body>
+
+<nav>
+
+<div class="logo">
+JS<span>Academy</span>
+</div>
+
+<ul>
+
+    <li><a href="index.html" class="active">Home</a></li>
+
+    <li><a href="progress.html">Progress</a></li>
+
+    <li><a href="lessons.html">Lessons</a></li>
+
+    <li><a href="quiz.html">Quiz</a></li>
+
+    <li><a href="about.html">About</a></li>
+
+    <li><a href="contact.html">Contact</a></li>
+
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<div class="hero-text">
+
+<h1>Master <span>JavaScript</span> From Beginner to Pro</h1>
+
+<p>
+Learn JavaScript with interactive lessons, quizzes, coding challenges,
+and real-world projects. Build practical skills step by step in a clean,
+easy-to-follow learning environment.
+</p>
+
+<div class="buttons">
+
+<a href="lessons.html"><button class="btn primary">Start Learning</button></a>
+
+</div>
+
+</div>
+
+<div class="hero-card">
+
+<div class="code">
+
+<span class="keyword">const</span> course = <span class="string">"JavaScript"</span>;<br>
+
+<span class="keyword">let</span> progress = <span class="number">0</span>;<br><br>
+
+<span class="keyword">function</span> learn(){<br>
+&nbsp;&nbsp;progress++;<br>
+&nbsp;&nbsp;console.log("Keep Coding 🚀");<br>
+}<br><br>
+
+learn();
+
+</div>
+
+</div>
+
+</section>
+
+<section class="features">
+
+<h2>Why Learn With Us?</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>📘 Beginner Friendly</h3>
+<p>
+Simple explanations with real-life examples make JavaScript easy to understand from day one.
+</p>
+</div>
+
+<div class="card">
+<h3>💻 Interactive Coding</h3>
+<p>
+Practice every lesson with built-in coding exercises and instant feedback.
+</p>
+</div>
+
+<div class="card">
+<h3>📝 Smart Quizzes</h3>
+<p>
+Test your knowledge after every chapter and track your learning progress.
+</p>
+</div>
+
+<div class="card">
+<h3>🚀 Real Projects</h3>
+<p>
+Build practical applications like calculators, to-do apps, weather apps and more.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="cta">
+
+<h2>Start Your JavaScript Journey Today</h2>
+
+<p>
+Whether you're learning programming for the first time or preparing for web development, our structured lessons will help you become a confident JavaScript developer.
+</p>
+
+<a href="progress.html"><button class="btn primary">Begin Your Journey</button></a>
+
+</section>
+
+<footer>
+
+© 2026 JSAcademy | Learn JavaScript Professionally
+
+</footer>
+
+</body>
+</html>

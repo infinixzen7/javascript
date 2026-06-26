@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 1 Quiz | JavaScript</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:linear-gradient(135deg,#0f172a,#1e293b,#111827);
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:30px;
+color:white;
+overflow-x:hidden;
+
+}
+
+body::before{
+
+content:"";
+position:fixed;
+width:400px;
+height:400px;
+background:#3b82f655;
+border-radius:50%;
+top:-120px;
+left:-120px;
+filter:blur(90px);
+
+}
+
+body::after{
+
+content:"";
+position:fixed;
+width:350px;
+height:350px;
+background:#9333ea55;
+border-radius:50%;
+bottom:-100px;
+right:-100px;
+filter:blur(90px);
+
+}
+
+.container{
+
+width:900px;
+max-width:100%;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.15);
+
+border-radius:25px;
+
+padding:35px;
+
+box-shadow:0 20px 50px rgba(0,0,0,.4);
+
+animation:fade .7s;
+
+}
+
+@keyframes fade{
+
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
+
+}
+
+header{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:20px;
+
+}
+
+h1{
+
+font-size:35px;
+
+}
+
+.subtitle{
+
+color:#94a3b8;
+
+margin-top:5px;
+
+}
+
+.stats{
+
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+
+}
+
+.badge{
+
+padding:10px 18px;
+
+background:#1e293b;
+
+border-radius:30px;
+
+font-size:14px;
+
+}
+
+.progressBox{
+
+margin:30px 0;
+
+}
+
+.progress{
+
+height:15px;
+
+background:#233049;
+
+border-radius:20px;
+
+overflow:hidden;
+
+}
+
+.progressFill{
+
+height:100%;
+
+width:0%;
+
+background:linear-gradient(90deg,#3b82f6,#22c55e);
+
+transition:.4s;
+
+}
+
+.questionNo{
+
+margin-bottom:10px;
+
+font-weight:600;
+
+}
+
+.question{
+
+font-size:24px;
+
+margin:25px 0;
+
+}
+
+.options{
+
+display:grid;
+
+gap:18px;
+
+}
+
+.option{
+
+padding:18px;
+
+background:#1e293b;
+
+border:2px solid transparent;
+
+border-radius:15px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.option:hover{
+
+transform:translateY(-3px);
+
+border-color:#3b82f6;
+
+}
+
+.option.selected{
+
+background:#2563eb;
+
+border-color:#60a5fa;
+
+}
+
+.buttons{
+
+display:flex;
+
+justify-content:space-between;
+
+margin-top:35px;
+
+}
+
+button{
+
+padding:15px 30px;
+
+border:none;
+
+border-radius:12px;
+
+cursor:pointer;
+
+font-size:16px;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.prev{
+
+background:#374151;
+
+color:white;
+
+}
+
+.next{
+
+background:linear-gradient(90deg,#2563eb,#7c3aed);
+
+color:white;
+
+}
+
+button:hover{
+
+transform:scale(1.05);
+
+}
+
+.result{
+
+display:none;
+
+text-align:center;
+
+}
+
+.score{
+
+font-size:70px;
+
+font-weight:700;
+
+margin:20px 0;
+
+color:#22c55e;
+
+}
+
+.fail{
+
+color:#ef4444;
+
+}
+
+.review{
+
+margin-top:40px;
+
+text-align:left;
+
+}
+
+.reviewCard{
+
+background:#1e293b;
+
+padding:20px;
+
+border-radius:15px;
+
+margin-top:20px;
+
+}
+
+.correct{
+
+color:#22c55e;
+
+margin-top:10px;
+
+}
+
+.wrong{
+
+color:#ef4444;
+
+margin-top:10px;
+
+}
+
+.explain{
+
+margin-top:10px;
+
+color:#cbd5e1;
+
+}
+
+@media(max-width:700px){
+
+header{
+
+flex-direction:column;
+align-items:flex-start;
+
+}
+
+.buttons{
+
+flex-direction:column;
+gap:15px;
+
+}
+
+button{
+
+width:100%;
+
+}
+
+.question{
+
+font-size:20px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div id="quiz">
+
+<header>
+
+<div>
+
+<h1>Lesson 1 Quiz</h1>
+
+<p class="subtitle">Test Your JavaScript Basics</p>
+
+</div>
+
+<div class="stats">
+
+<div class="badge">10 Questions</div>
+
+<div class="badge">Pass: 70%</div>
+
+<div class="badge" id="timer">10:00</div>
+
+</div>
+
+</header>
+
+<div class="progressBox">
+
+<div class="questionNo" id="questionNo"></div>
+
+<div class="progress">
+
+<div class="progressFill" id="progressFill"></div>
+
+</div>
+
+</div>
+
+<h2 class="question" id="question"></h2>
+
+<div class="options" id="options"></div>
+
+<div class="buttons">
+
+<button class="prev" onclick="prevQuestion()">Previous</button>
+
+<button class="next" id="nextBtn" onclick="nextQuestion()">Next</button>
+
+</div>
+
+</div>
+
+<div class="result" id="result">
+
+<h1>Quiz Completed 🎉</h1>
+
+<div class="score" id="score"></div>
+
+<h2 id="status"></h2>
+
+<button class="next" onclick="location.reload()">Retake Quiz</button>
+
+<div class="review" id="review"></div>
+
+</div>
+
+</div>
+
+<script>
+
+const questions=[
+
+{
+q:"What is JavaScript?",
+o:["Styling Language","Programming Language","Database","Operating System"],
+a:1,
+e:"JavaScript is a programming language used to make websites interactive."
+},
+
+{
+q:"JavaScript is mainly used to make websites...",
+o:["Static","Interactive","Offline","Invisible"],
+a:1,
+e:"JavaScript adds interactivity like buttons, forms and animations."
+},
+
+{
+q:"Where does console.log() display output?",
+o:["Browser Console","Website","Database","Server"],
+a:0,
+e:"The output appears inside the browser Developer Console."
+},
+
+{
+q:"Which method prints output?",
+o:["alert()","console.log()","document.write()","print()"],
+a:1,
+e:"console.log() prints messages to the browser console."
+},
+
+{
+q:"JavaScript can change webpage content.",
+o:["True","False"],
+a:0,
+e:"JavaScript can modify HTML and CSS dynamically."
+},
+
+{
+q:"HTML is used for programming logic.",
+o:["True","False"],
+a:1,
+e:"HTML creates structure, JavaScript handles logic."
+},
+
+{
+q:"JavaScript runs inside the...",
+o:["Browser","Printer","Calculator","Speaker"],
+a:0,
+e:"Browsers contain JavaScript engines."
+},
+
+{
+q:"Which is NOT a use of JavaScript?",
+o:["Animations","Cooking Food","Forms","Games"],
+a:1,
+e:"JavaScript cannot cook food 😊"
+},
+
+{
+q:'console.log("Hello") prints...',
+o:["Nothing","Hello","Error","Website"],
+a:1,
+e:'It prints "Hello" in the browser console.'
+},
+
+{
+q:"JavaScript works together with...",
+o:["Python Only","HTML & CSS","Excel","Photoshop"],
+a:1,
+e:"HTML + CSS + JavaScript together build modern websites."
+}
+
+];
+
+let current=0;
+
+let answers=[];
+
+const question=document.getElementById("question");
+
+const options=document.getElementById("options");
+
+const qno=document.getElementById("questionNo");
+
+const progress=document.getElementById("progressFill");
+
+function load(){
+
+let q=questions[current];
+
+qno.innerHTML=`Question ${current+1} of ${questions.length}`;
+
+progress.style.width=((current)/questions.length*100)+"%";
+
+question.innerHTML=q.q;
+
+options.innerHTML="";
+
+q.o.forEach((opt,index)=>{
+
+let div=document.createElement("div");
+
+div.className="option";
+
+if(answers[current]==index)div.classList.add("selected");
+
+div.innerHTML=opt;
+
+div.onclick=()=>{
+
+answers[current]=index;
+
+load();
+
+}
+
+options.appendChild(div);
+
+});
+
+document.getElementById("nextBtn").innerHTML=current==questions.length-1?"Submit":"Next";
+
+}
+
+load();
+
+function nextQuestion(){
+
+if(current<questions.length-1){
+
+current++;
+
+load();
+
+}else{
+
+showResult();
+
+}
+
+}
+
+function prevQuestion(){
+
+if(current>0){
+
+current--;
+
+load();
+
+}
+
+}
+if(percent >= 75){
+
+    localStorage.setItem("quiz1Completed","true");
+    localStorage.setItem("quiz1Score",percent);
+
+}
+else{
+
+    localStorage.removeItem("quiz1Completed");
+    localStorage.setItem("quiz1Score",percent);
+
+}
+let time=600;
+
+const timer=document.getElementById("timer");
+
+setInterval(()=>{
+
+if(document.getElementById("quiz").style.display=="none")return;
+
+let m=Math.floor(time/60);
+
+let s=time%60;
+
+timer.innerHTML=`${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+
+if(time===0){
+
+showResult();
+
+}
+
+time--;
+
+},1000);
+
+</script>
+
+</body>
+</html>
