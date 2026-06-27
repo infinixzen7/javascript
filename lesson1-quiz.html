@@ -601,47 +601,65 @@ function showResult() {
     document.getElementById("result").style.display = "block";
 
     let score = 0;
-    let review = "";
+
+    questions.forEach((q, i) => {
+        if (answers[i] === q.a) score++;
+    });
+
+    let percent = Math.round((score / questions.length) * 100);
+
+    // Show score
+    document.getElementById("score").innerHTML =
+        `${score}/${questions.length}<br>${percent}%`;
+
+    const status = document.getElementById("status");
+
+    if (percent >= 75) {
+        status.innerHTML = "✅ Congratulations! You Passed";
+        status.className = "correct";
+
+        // Save quiz completion
+        localStorage.setItem("quiz1Completed", "true");
+        localStorage.setItem("quiz1Score", percent);
+
+    } else {
+        status.innerHTML = "❌ You Failed";
+        status.className = "fail";
+
+        localStorage.removeItem("quiz1Completed");
+        localStorage.setItem("quiz1Score", percent);
+    }
+
+    // Answer Review
+    const review = document.getElementById("review");
+    review.innerHTML = "<h2>Answer Review</h2>";
 
     questions.forEach((q, i) => {
 
-        if (answers[i] === q.a) {
-            score++;
-        }
-
-        review += `
+        review.innerHTML += `
         <div class="reviewCard">
-            <h3>Q${i + 1}. ${q.q}</h3>
-            <p>Your Answer: ${
-                answers[i] !== undefined ? q.o[answers[i]] : "Not Answered"
-            }</p>
+
+            <h3>${i + 1}. ${q.q}</h3>
+
             <p class="${answers[i] === q.a ? "correct" : "wrong"}">
-                Correct Answer: ${q.o[q.a]}
+                Your Answer :
+                ${answers[i] !== undefined ? q.o[answers[i]] : "Not Answered"}
             </p>
-            <p class="explain">${q.e}</p>
-        </div>`;
+
+            <p class="correct">
+                Correct Answer :
+                ${q.o[q.a]}
+            </p>
+
+            <p class="explain">
+                ${q.e}
+            </p>
+
+        </div>
+        `;
+
     });
 
-    let percent = Math.round(score / questions.length * 100);
-
-    document.getElementById("score").innerHTML = `${percent}%`;
-
-    document.getElementById("status").innerHTML =
-        percent >= 70 ? "✅ Passed" : "❌ Failed";
-
-    document.getElementById("status").className =
-        percent >= 70 ? "correct" : "fail";
-
-    document.getElementById("review").innerHTML = review;
-
-    // Save progress
-    if (percent >= 75) {
-        localStorage.setItem("quiz1Completed", "true");
-    } else {
-        localStorage.removeItem("quiz1Completed");
-    }
-
-    localStorage.setItem("quiz1Score", percent);
 }
 
 let time=600;
