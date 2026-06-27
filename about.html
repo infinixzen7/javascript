@@ -21,23 +21,24 @@ background:#0f172a;
 color:white;
 }
 
-/* NAVBAR */
+/* Navbar */
 
 nav{
-position:fixed;
-top:0;
-width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:18px 8%;
-background:#111827;
-box-shadow:0 5px 20px rgba(0,0,0,.35);
+padding:20px 8%;
+background:rgba(15,23,42,.95);
+backdrop-filter:blur(15px);
+position:fixed;
+width:100%;
+top:0;
 z-index:1000;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
 }
 
 .logo{
-font-size:28px;
+font-size:30px;
 font-weight:700;
 color:#38bdf8;
 }
@@ -49,17 +50,17 @@ color:#facc15;
 nav ul{
 display:flex;
 list-style:none;
-gap:25px;
+gap:35px;
 }
 
-nav a{
+nav ul li a{
 text-decoration:none;
 color:white;
+font-weight:500;
 transition:.3s;
 }
 
-nav a:hover,
-.active{
+nav ul li a:hover{
 color:#38bdf8;
 }
 
@@ -138,15 +139,26 @@ color:#94a3b8;
 
 <nav>
 
-<div class="logo">JS<span>Academy</span></div>
+<div class="logo">
+
+JS<span>Academy</span>
+
+</div>
 
 <ul>
+
 <li><a href="index.html">Home</a></li>
-<li><a href="journey.html">Journey</a></li>
+
 <li><a href="lessons.html">Lessons</a></li>
+
 <li><a href="quiz.html">Quiz</a></li>
+
+<li><a href="progress.html" >Progress</a></li>
+
 <li><a href="about.html" class="active">About</a></li>
+
 <li><a href="contact.html">Contact</a></li>
+
 </ul>
 
 </nav>
