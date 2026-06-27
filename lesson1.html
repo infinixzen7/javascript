@@ -289,34 +289,14 @@ output.innerHTML = "Error: " + err.message;
 }
 function completeLesson(){
 
-// Check if Lesson 1 is already completed
-if(localStorage.getItem("lesson1Completed")=="true"){
+    localStorage.setItem("lesson1Completed","true");
 
-    alert("You have already completed this lesson.");
-    return;
+    alert("Lesson Completed Successfully!");
 
-}
-
-// Mark Lesson 1 as completed
-localStorage.setItem("lesson1Completed","true");
-
-// Unlock Quiz 1
-localStorage.setItem("lesson1Unlocked","true");
-
-// Increase completed lessons
-let completed = Number(localStorage.getItem("lessonsCompleted")) || 0;
-
-completed++;
-
-if(completed > 15){
-    completed = 15;
-}
-
-localStorage.setItem("lessonsCompleted", completed);
-
-alert("🎉 Lesson 1 completed successfully!");
+    location.href="progress.html";
 
 }
+
 window.onload=function(){
 
     if(localStorage.getItem("lesson1Completed")=="true"){
