@@ -523,45 +523,15 @@ output.innerHTML="Error : "+err.message;
 // ===========================
 // COMPLETE LESSON
 // ===========================
-
 function completeLesson(){
 
-// Prevent counting Lesson 2 more than once
+    localStorage.setItem("lesson2Completed","true");
 
-if(localStorage.getItem("lesson2Completed")=="true"){
+    alert("Lesson Completed Successfully!");
 
-alert("You have already completed this lesson.");
-
-return;
+    location.href="progress.html";
 
 }
-
-// Mark Lesson 2 as completed
-
-localStorage.setItem("lesson2Completed","true");
-
-// Unlock Quiz 2
-
-localStorage.setItem("lesson2Unlocked","true");
-
-// Increase completed lessons
-
-let completed=Number(localStorage.getItem("lessonsCompleted")) || 0;
-
-completed++;
-
-if(completed>15){
-
-completed=15;
-
-}
-
-localStorage.setItem("lessonsCompleted",completed);
-
-alert("🎉 Lesson 2 completed successfully!");
-
-}
-
 </script>
 
 </body>
