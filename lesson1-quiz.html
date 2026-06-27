@@ -594,18 +594,56 @@ load();
 }
 
 }
-if(percent >= 75){
 
-    localStorage.setItem("quiz1Completed","true");
-    localStorage.setItem("quiz1Score",percent);
+function showResult() {
 
+    document.getElementById("quiz").style.display = "none";
+    document.getElementById("result").style.display = "block";
+
+    let score = 0;
+    let review = "";
+
+    questions.forEach((q, i) => {
+
+        if (answers[i] === q.a) {
+            score++;
+        }
+
+        review += `
+        <div class="reviewCard">
+            <h3>Q${i + 1}. ${q.q}</h3>
+            <p>Your Answer: ${
+                answers[i] !== undefined ? q.o[answers[i]] : "Not Answered"
+            }</p>
+            <p class="${answers[i] === q.a ? "correct" : "wrong"}">
+                Correct Answer: ${q.o[q.a]}
+            </p>
+            <p class="explain">${q.e}</p>
+        </div>`;
+    });
+
+    let percent = Math.round(score / questions.length * 100);
+
+    document.getElementById("score").innerHTML = `${percent}%`;
+
+    document.getElementById("status").innerHTML =
+        percent >= 70 ? "✅ Passed" : "❌ Failed";
+
+    document.getElementById("status").className =
+        percent >= 70 ? "correct" : "fail";
+
+    document.getElementById("review").innerHTML = review;
+
+    // Save progress
+    if (percent >= 75) {
+        localStorage.setItem("quiz1Completed", "true");
+    } else {
+        localStorage.removeItem("quiz1Completed");
+    }
+
+    localStorage.setItem("quiz1Score", percent);
 }
-else{
 
-    localStorage.removeItem("quiz1Completed");
-    localStorage.setItem("quiz1Score",percent);
-
-}
 let time=600;
 
 const timer=document.getElementById("timer");
